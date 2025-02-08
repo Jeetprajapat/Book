@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            background-color: rgb(123, 232, 249);
+        }
+        .book{
+            position: relative;
+            width: 350px;
+            height: 500px;
+            transition: transform 0.5s;
+        }
+        .paper{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            perspective: 1500px;
+        }
+        .front, 
+        .back{
+            background-color: white;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+        .front{
+            z-index: 1;
+            backface-visibility: hidden;
+            border-left: 3px solid rgb(123, 232, 249);
+        }
+        .back{
+            z-index: 0;
+        }
+        .front-content, 
+        .back-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .back-content{
+            transform: rotateY(180deg);
+        }
+        .flipped .front, 
+        .flipped .back{
+            transform: rotateY(-180deg);
+        }
+        button{
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.5s;
+        }
+        button:focus{
+            outline: none;
+        }
+       
+        button:hover i{
+            color: rgb(3, 27, 148);
+        }
+        i{
+            font-size: 50px;
+            color: rgb(84, 92, 235);
+        }
+        #p1{
+            z-index: 6;
+        }
+        #p2{
+            z-index: 5;
+        }
+        #p3{
+            z-index: 4;
+        }
+        #p4{
+            z-index: 3;
+        }
+        #p5{
+            z-index: 2;
+        }
+        #p6{
+            z-index: 1;
+        }
+     #prev-btn{
+        height: 200px;
+        width: 50px;
+        border: none;
+        background-color: transparent;
+     }   
+     #next-btn{
+        height: 200px;
+        width: 50px;
+        border: none;
+        background-color: transparent;
+     }   
+     .page1{
+        width: 100%;
+            height: 100%;
+            background-image: url('book front.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+     }
+     .back6{
+        width: 100%;
+            height: 100%;
+            background-image: url('book back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+     }
+     .front6,.back5,.front5,.back4,.front4,.back3,.front3,.back2,.front2,
+     .back1{
+        width: 100%;
+            height: 100%;
+            background-image: url('back page1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+     }
+     .back2{
+        background-image: url('back2.jpg');
+     }
+     .front2{
+        background-image: url('front2.jpg');
+     }
+     .back3{
+        background-image: url('back3.jpg');
+     }
+     .front3{
+        background-image: url('front3.jpg');
+     }
+
+     .back4{
+        background-image: url('back4.jpg');
+     }
+     .front4{
+        background-image: url('front4.jpg');
+     }
+     .back5{
+        background-image: url('back5.jpg');
+     }
+     .front5{
+        background-image: url('front5.jpg');
+     }
+     .front6{
+        background-image: url('front6.jpg');
+     }
+    </style>
+</head>
+<body>
+ <button id="prev-btn">
+    <i class="fa fa-arrow-left" aria-hidden="true" style='font-size:46px'></i>
+ </button> 
+ <div id="book" class="book">
+    <div id="p1" class="paper">
+        <div class="front">
+            <div id="f1" class="front-content">
+                <div class="page1"></div>
+            </div>
+        </div>
+        <div class="back">
+            <div id="b1" class="back-content">
+                <div class="back1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="p2" class="paper">
+        <div class="front">
+            <div id="f2" class="front-content">
+                <div class="front2"></div>
+            </div>
+        </div>
+
+        <div class="back">
+            <div id="b2" class="back-content">
+                <div class="back2"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="p3" class="paper">
+        <div class="front">
+            <div id="f3" class="front-content">
+                <div class="front3"></div>
+            </div>
+        </div>
+
+        <div class="back">
+            <div id="b3" class="back-content">
+                <div class="back3"></div>
+            </div>
+        </div>
+    </div>
+    <div id="p4" class="paper">
+        <div class="front">
+            <div id="f4" class="front-content">
+                <div class="front4"></div>
+            </div>
+        </div>
+        <div class="back">
+            <div id="b4" class="back-content">
+                <div class="back4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="p5" class="paper">
+        <div class="front">
+            <div id="f5" class="front-content">
+                <div class="front5"></div>
+            </div>
+        </div>
+
+        <div class="back">
+            <div id="b5" class="back-content">
+                <div class="back5"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="p6" class="paper">
+        <div class="front">
+            <div id="f6" class="front-content">
+                <div class="front6"></div>
+            </div>
+        </div>
+
+        <div class="back">
+            <div id="b6" class="back-content">
+                <div class="back6"></div>
+            </div>
+        </div>
+    </div>
+
+ </div>
+ <button id="next-btn">
+    <i class="fa fa-arrow-right" aria-hidden="true" style='font-size:46px'></i>
+ </button> 
+</body>
+<script>
+const prevBtn=document.querySelector("#prev-btn");
+const nextBtn=document.querySelector("#next-btn");
+const book=document.querySelector("#book");
+
+const paper1=document.querySelector("#p1");
+const paper2=document.querySelector("#p2");
+const paper3=document.querySelector("#p3");
+const paper4=document.querySelector("#p4");
+const paper5=document.querySelector("#p5");
+const paper6=document.querySelector("#p6");
+
+prevBtn.addEventListener("click",goPrevPage);
+nextBtn.addEventListener("click",goNextPage);
+
+// Business Logic
+let currentLocation=1;
+let numofPapers = 6;
+let maxLocation = numofPapers+1;
+
+function openBook(){
+    book.style.transform = "translateX(50%)";
+    prevBtn.style.transform = "translateX(-180px)";
+    nextBtn.style.transform = "translateX(180px)";
+}
+
+function closeBook(isAtBeginning){
+    if (isAtBeginning) {
+        book.style.transform = "translateX(0%)";
+    }
+    else{
+        book.style.transform = "translateX(100%)";
+    }
+    prevBtn.style.transform = "translateX(0px)";
+    nextBtn.style.transform = "translateX(0px)";
+}
+
+function goNextPage(){
+    if(currentLocation < maxLocation){
+        switch(currentLocation){
+            case 1:
+                openBook();
+                paper1.classList.add("flipped");
+                paper1.style.zIndex = 1;
+                break;
+            case 2:
+                paper2.classList.add("flipped");
+                paper2.style.zIndex = 2;
+                break;
+            case 3:
+                paper3.classList.add("flipped");
+                paper3.style.zIndex = 3;
+                break;
+            case 4:
+                paper4.classList.add("flipped");
+                paper4.style.zIndex = 4;
+                break;
+            case 5:
+                paper5.classList.add("flipped");
+                paper5.style.zIndex = 5;
+                break;
+            case 6:
+                paper6.classList.add("flipped");
+                paper6.style.zIndex = 6;
+                closeBook();
+                break;
+            default:
+               throw new Error("unknow state"); 
+        }
+        currentLocation++;
+    }
+    
+}
+
+function goPrevPage(){
+    if (currentLocation>1) {
+        switch (currentLocation) {
+            case 2:
+                closeBook(true);
+                paper1.classList.remove("flipped");
+                paper1.style.zIndex=6;
+                break;
+            case 3:
+                paper2.classList.remove("flipped");
+                paper2.style.zIndex=5;
+                break;
+            case 4:
+                paper3.classList.remove("flipped");
+                paper3.style.zIndex=4;
+                break;
+            case 5:
+                paper4.classList.remove("flipped");
+                paper4.style.zIndex=3;
+                break;
+            case 6:
+                paper5.classList.remove("flipped");
+                paper5.style.zIndex=2;
+                break;
+            case 7:
+                paper6.classList.remove("flipped");
+                paper6.style.zIndex=1;
+                openBook();
+                break;
+            default:
+                throw new Error("unkown states");
+                break;
+        }
+        currentLocation--;
+    }
+    
+}
+</script>
+</html>
